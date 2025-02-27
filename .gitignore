@@ -1,6 +1,10 @@
 # Fichier local contenant des informations sensibles (à ne pas versionner)
 .env.local
 
+
+# Python
+.venv
+
 # Fichiers propres à FastAPI
 .idea
 .ipynb_checkpoints
