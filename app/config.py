@@ -16,8 +16,8 @@ class Settings(BaseSettings):
         return f"mysql+pymysql://{self.mysql_username}:{self.mysql_password}@{self.mysql_host}:{self.mysql_port}/{self.mysql_database}"
 
     class Config:
-        # Si .env.local existe, il est utilisé en priorité, sinon .env est chargé
-        env_file = [".env.local", ".env"]
+        # Charger d'abord .env, puis .env.local qui écrase les valeurs en doublon
+        env_file = [".env", ".env.local"]
         env_file_encoding = "utf-8"
 
 settings = Settings()
