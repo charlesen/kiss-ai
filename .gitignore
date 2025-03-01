@@ -1,6 +1,9 @@
 # Fichier local contenant des informations sensibles (à ne pas versionner)
 .env.local
 
+# App
+
+public/medias
 
 # Python
 .venv
