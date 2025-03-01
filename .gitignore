@@ -2,8 +2,7 @@
 .env.local
 
 # App
-
-public/medias
+public/medias/*.mp3
 
 # Python
 .venv
