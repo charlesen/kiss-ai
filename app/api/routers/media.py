@@ -17,7 +17,7 @@ class AudioResponse(BaseModel):
 async def text_to_speech(text: str, request: Request, language: Optional[str] = "fr"):
     try:
         # Initialisation du moteur gtts        
-        tts = gTTS(text, lang=language)
+        tts = gTTS(text, lang=language, slow=False)
         # Chemin du fichier audio avec le UUID
         # UUID unique pour le nom du fichier
         unique_id = uuid.uuid4()
