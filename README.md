@@ -7,6 +7,44 @@ _Le principe KISS stipule que la plupart des systèmes fonctionnent mieux lorsqu
 
 Kiss AI vise à démocratiser l'accès à l'intelligence artificielle en fournissant des outils simples, efficaces et accessibles. En adhérant au principe KISS, nous nous engageons à développer des solutions qui répondent aux besoins actuels tout en restant conviviales et performantes.​
 
+Kiss AI reconnaît les préoccupations environnementales liées à l'utilisation de technologies d'IA gourmandes en ressources. En privilégiant des modèles légers et des algorithmes optimisés, nous visons à réduire l'empreinte carbone associée au déploiement de solutions d'IA. Cette approche permet de concilier innovation technologique et responsabilité écologique.
+
+## Installation
+
+Prérequis : Python
+
+1. Cloner le dépôt :
+
+```bash
+$ git clone https://github.com/charlesen/kiss-ai.git
+$ cd kiss-ai
+```
+
+2. Virtual python :
+
+```bash
+$ python -m venv .venv
+$ source .venv/bin/activate
+```
+
+3. Installation des dépendances
+
+```bash
+$ pip install -r requirements.txt
+```
+
+4. Lancement de l'application
+
+```bash
+$ uvicorn app.main:app --reload
+```
+
+L'application sera accessible à l'adresse : http://127.0.0.1:8000.
+
+Une fois le serveur en marche, vous pouvez accéder à la documentation interactive de l'API à l'adresse : http://127.0.0.1:8000/docs.
+
+Cette interface, générée automatiquement par FastAPI, vous permettra de tester les différents endpoints de l'application.
+
 ## Fonctionnalités clés (_en constante évolution_)
 
 - Synthèse vocale : Conversion de texte en parole de haute qualité, avec des options pour personnaliser la langue et la voix, en utilisant des bibliothèques comme pyttsx3 et gTTS.​
