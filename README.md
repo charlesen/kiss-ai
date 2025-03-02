@@ -5,6 +5,8 @@ Ce principe est largement reconnu dans le développement logiciel et la concepti
 
 _Le principe KISS stipule que la plupart des systèmes fonctionnent mieux lorsqu'ils sont conçus de manière simple, évitant ainsi des conceptions inutiles et complexes._
 
+Kiss AI vise à démocratiser l'accès à l'intelligence artificielle en fournissant des outils simples, efficaces et accessibles. En adhérant au principe KISS, nous nous engageons à développer des solutions qui répondent aux besoins actuels tout en restant conviviales et performantes.​
+
 ## Fonctionnalités clés (_en constante évolution_)
 
 - Synthèse vocale : Conversion de texte en parole de haute qualité, avec des options pour personnaliser la langue et la voix, en utilisant des bibliothèques comme pyttsx3 et gTTS.​
@@ -29,8 +31,8 @@ Nous encourageons vivement les contributions de la communauté pour enrichir Kis
 
 Option 1
 
-- Créez une branche : Développez vos modifications sur une branche distincte nommée de manière descriptive.​
-- Soumettez une Pull Request : Proposez vos modifications pour examen et intégration dans la branche principale.
+- Créez une branche : développez vos modifications sur une branche distincte nommée de manière descriptive.​
+- Soumettez une Pull Request : proposez vos modifications pour examen et intégration dans la branche principale.
 
 Option 2
 
