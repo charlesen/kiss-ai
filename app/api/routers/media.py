@@ -12,7 +12,7 @@ router = APIRouter(dependencies=[Depends(verify_master_key)])
 class AudioResponse(BaseModel):
     audio_url: str
 
-@router.post("/text-to-speech", response_model=AudioResponse, tags=["Media"])
+@router.post("/text-to-speech", response_model=AudioResponse)
 async def text_to_speech(text: str, request: Request, language: Optional[str] = "fr"):
     try:
         # Initialisation du moteur gtts        

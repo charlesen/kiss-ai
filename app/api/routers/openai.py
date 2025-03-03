@@ -9,25 +9,39 @@ router = APIRouter(dependencies=[Depends(verify_master_key)])
 
 client = get_openai_client()
 
-class OpenAIResponse(BaseModel):
-    content: str
-
-@router.get("/generate", response_model=OpenAIResponse)
-async def generate_text(
-    user_message: str = Query(..., description="Contenu du message pour le rôle user"),
+class GenerateRequest(BaseModel):
+    user_message: str
     developer_message: Optional[str] = Query(
         None, description="Contenu du message pour le rôle developer (optionnel)"
     )
+
+class SummarizeRequest(BaseModel):
+    text: str = Query(..., description="Texte à résumer")
+
+class OpenAIResponse(BaseModel):
+    content: str
+
+@router.post("/generate", response_model=OpenAIResponse)
+async def generate_text(request_data: GenerateRequest
 ):
+    """
+    Generates a message based on the user_message and developer_message inputs.
+    
+    - The developer_message is optional and provides additional context 
+    context for text generation. If this parameter is omitted 
+    the OpenAI template will receive only the user_message.
+    
+    - The response contains the contents of the generated message.
+    """
     messages = []
-    if developer_message:
+    if request_data.developer_message:
         messages.append({
             "role": "developer",
-            "content": developer_message
+            "content": request_data.developer_message
         })
     messages.append({
         "role": "user",
-        "content": user_message
+        "content": request_data.user_message
     })
 
     try:
@@ -41,21 +55,36 @@ async def generate_text(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/summarize")
-async def summarize_text(
-    text: str = Query(..., description="Texte à résumer")
-):
+@router.post("/summarize", response_model=OpenAIResponse)
+async def summarize_text(request_data: SummarizeRequest):
+    """
+    Summarizes the given text using an OpenAI model.
+
+    This endpoint receives a text input and generates a summary by interacting
+    with the OpenAI API. The summarization is done in the language of the user.
+
+    - Args:
+        - text (str): The text to be summarized.
+
+    - Returns:
+        - dict: A dictionary containing the summarized text under the key 'summary'.
+
+    - Raises:
+        - HTTPException: If an error occurs during the API call, an HTTP 500 error 
+        is raised with the error details.
+    """
+
     messages = [
         {"role": "system", "content": "You are a helpful summarizer."},
-        {"role": "user", "content": f"Please summarize the following text in the language of the user:\n\n{text}"}
+        {"role": "user", "content": f"Please summarize the following text in the language of the user:\n\n{request_data.text}"}
     ]
     try:
-        completion = await client.chat.completions.acreate(
+        completion = await client.chat.completions.create(
             model=settings.openai_model,
             messages=messages
         )
         summary = completion.choices[0].message.content
-        return {"summary": summary}
+        return OpenAIResponse(content=summary)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
