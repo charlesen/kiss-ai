@@ -9,10 +9,10 @@ from pydantic import BaseModel
 from app.dependencies import verify_master_key
 router = APIRouter(dependencies=[Depends(verify_master_key)])
 
-class AudioResponse(BaseModel):
+class MediaResponse(BaseModel):
     audio_url: str
 
-@router.post("/text-to-speech", response_model=AudioResponse)
+@router.post("/text-to-speech", response_model=MediaResponse)
 async def text_to_speech(text: str, request: Request, language: Optional[str] = "fr"):
     try:
         # Initialisation du moteur gtts        
@@ -28,7 +28,7 @@ async def text_to_speech(text: str, request: Request, language: Optional[str] = 
         # URL absolue du fichier audio
         audio_url = f"{request.base_url}/public/medias/{audio_filename}"
 
-        return AudioResponse(audio_url=audio_url)
+        return MediaResponse(audio_url=audio_url)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors de la conversion du texte en parole : {str(e)}")
     
