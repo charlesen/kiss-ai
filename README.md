@@ -13,14 +13,12 @@ Kiss AI reconnaît les préoccupations environnementales liées à l'utilisation
 
 Prérequis : Python
 
-### Avec Docker
-
 ```bash
 $ git clone https://github.com/charlesen/kiss-ai.git
 $ cd kiss-ai
 ```
 
-Créez un fichier `.env.local` pour y stocker vos informations sensibles, notamment la Master Key essentielle pour interagir avec l'API.
+Créez un fichier `.env.local` à la racine du projet pour y stocker vos informations sensibles, notamment la Master Key essentielle pour interagir avec l'API.
 
 ```bash
 # .env.local
@@ -32,7 +30,15 @@ openai_api_key=cle_open_ai
 openai_model=gpt-4o-mini
 ```
 
-ou alors mettre à jour les valeurs de vos variables d'environnement (master key, clé OpenAI, ...) comme ceci :
+### Avec Docker
+
+Démarrage du container :
+
+```bash
+$ docker-compose up --build
+```
+
+Par la suite, vous pourrezz mettre à jour les valeurs de vos variables d'environnement (master key, clé OpenAI, ...) comme ceci :
 
 ```bash
 $ docker run -p 8000:8000 \
@@ -43,51 +49,24 @@ $ docker run -p 8000:8000 \
   nom_de_votre_image
 ```
 
-Démarrage du container :
-
-```bash
-$ docker-compose up --build
-```
-
-L'application est ensuite disponible à l'adresse : http://localhost:8000
+ou en accedant à l'image avec le bash
 
 ### Sans Docker
 
-1. Cloner le dépôt :
-
-```bash
-$ git clone https://github.com/charlesen/kiss-ai.git
-$ cd kiss-ai
-```
-
-2. Virtual python :
+1. Virtual python :
 
 ```bash
 $ python -m venv .venv
 $ source .venv/bin/activate
 ```
 
-3. Installation des dépendances
+2. Installation des dépendances
 
 ```bash
 $ pip install -r requirements.txt
 ```
 
-4. Fichier de configuration
-
-Créez un fichier `.env.local` pour y stocker vos informations sensibles, notamment la Master Key essentielle pour interagir avec l'API.
-
-```bash
-# .env.local
-debug=True
-
-# API
-master_key=votre_master_key # Lancez la commande suivante pour générer une nouvelle clé ==> openssl rand -hex 16
-openai_api_key=cle_open_ai
-openai_model=gpt-4o-mini
-```
-
-5. Lancement de l'application
+3. Lancement de l'application
 
 ```bash
 $ uvicorn app.main:app --reload
