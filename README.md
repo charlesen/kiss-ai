@@ -18,10 +18,21 @@ Prérequis : Python
 ```bash
 $ git clone https://github.com/charlesen/kiss-ai.git
 $ cd kiss-ai
-$ docker-compose up --build
 ```
 
-Il vous suffit ensuite de mettre à jour les valeurs de votre fichier d'environnement (master key, clé OpenAI, ...) comme ceci :
+Créez un fichier `.env.local` pour y stocker vos informations sensibles, notamment la Master Key essentielle pour interagir avec l'API.
+
+```bash
+# .env.local
+debug=True
+
+# API
+master_key=votre_master_key # Lancez la commande suivante pour générer une nouvelle clé ==> openssl rand -hex 16
+openai_api_key=cle_open_ai
+openai_model=gpt-4o-mini
+```
+
+ou alors mettre à jour les valeurs de vos variables d'environnement (master key, clé OpenAI, ...) comme ceci :
 
 ```bash
 $ docker run -p 8000:8000 \
@@ -30,6 +41,12 @@ $ docker run -p 8000:8000 \
   -e OPENAI_MODEL=gpt-4o-mini \
   -e MASTER_KEY=VOTRE_MASTER_KEY_SECRET \
   nom_de_votre_image
+```
+
+Démarrage du container :
+
+```bash
+$ docker-compose up --build
 ```
 
 L'application est ensuite disponible à l'adresse : http://localhost:8000
