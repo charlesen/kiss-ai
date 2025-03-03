@@ -21,6 +21,21 @@ $ cd kiss-ai
 $ docker-compose up --build
 ```
 
+Il vous suffit ensuite de mettre à jour les valeurs de votre fichier d'environnement (master key, clé OpenAI, ...) comme ceci :
+
+```bash
+$ docker run -p 8000:8000 \
+  -e DEBUG=True \
+  -e OPENAI_API_KEY=VOTRE_CLE_OPENAI_SECRET \
+  -e OPENAI_MODEL=gpt-4o-mini \
+  -e ADMIN_SECRET=VOTRE_CLE_ADMIN_SECRET \
+  -e MYSQL_USERNAME=admin \
+  -e MYSQL_PASSWORD=admin \
+  -e MYSQL_DATABASE=fastapi_ai \
+  -e MASTER_KEY=VOTRE_MASTER_KEY_SECRET \
+  nom_de_votre_image
+```
+
 L'application est ensuite disponible à l'adresse : http://localhost:8000
 
 ### Sans Docker
