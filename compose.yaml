@@ -13,6 +13,11 @@ services:
       context: .
     ports:
       - 8000:8000
+    environment:
+      - DEBUG=True
+      - OPENAI_API_KEY=VOTRE_CLE_OPENAI_SECRET
+      - OPENAI_MODEL=gpt-4o-mini
+      - MASTER_KEY=VOTRE_MASTER_KEY_SECRET
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to

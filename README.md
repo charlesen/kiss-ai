@@ -18,7 +18,7 @@ Prérequis : Python
 ```bash
 $ git clone https://github.com/charlesen/kiss-ai.git
 $ cd kiss-ai
-$ docker compose up --build
+$ docker-compose up --build
 ```
 
 L'application est ensuite disponible à l'adresse : http://localhost:8000
