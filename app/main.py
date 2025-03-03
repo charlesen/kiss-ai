@@ -1,5 +1,5 @@
 # System
-import os
+import uvicorn
 
 # FastAPI
 from fastapi import FastAPI
@@ -13,12 +13,9 @@ from app.api.routers.media import router as media_router
 from app.config import settings
 
 
-app = FastAPI(title="AI API by Charles EDOU NZE", debug=settings.debug)
+app = FastAPI(title="Kiss AI", debug=settings.debug)
 
 # On monte le répertoire 'public' pour servir des fichiers statiques
-# current_dir = os.path.dirname(os.path.abspath(__file__))
-# public_dir = os.path.join(current_dir, 'public')
-# app.mount("public", StaticFiles(directory=public_dir), name="public")
 app.mount("/public", StaticFiles(directory="public"), name="public")
 
 # Endpoints de l'API publique
@@ -33,7 +30,6 @@ async def home():
 
 
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
 
 #uvicorn app.main:app --reload
