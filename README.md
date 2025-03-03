@@ -33,7 +33,21 @@ $ source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-4. Lancement de l'application
+4. Fichier de configuration
+
+Créez un fichier `.env.local` pour y stocker vos informations sensibles, notamment la Master Key essentielle pour interagir avec l'API.
+
+```bash
+# .env.local
+debug=True
+
+# API
+master_key=votre_master_key # Lancez la commande suivante pour générer une nouvelle clé ==> openssl rand -hex 16
+openai_api_key=cle_open_ai
+openai_model=gpt-4o-mini
+```
+
+5. Lancement de l'application
 
 ```bash
 $ uvicorn app.main:app --reload
@@ -43,7 +57,7 @@ L'application sera accessible à l'adresse : http://127.0.0.1:8000.
 
 Une fois le serveur en marche, vous pouvez accéder à la documentation interactive de l'API à l'adresse : http://127.0.0.1:8000/docs.
 
-Cette interface, générée automatiquement par FastAPI, vous permettra de tester les différents endpoints de l'application.
+Cette interface, générée automatiquement par FastAPI, vous permettra de tester les différents endpoints de l'application (Vous devrez indiquer la master key dans chacune des requetes).
 
 ## Fonctionnalités clés (_en constante évolution_)
 
