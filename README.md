@@ -13,6 +13,18 @@ Kiss AI reconnaît les préoccupations environnementales liées à l'utilisation
 
 Prérequis : Python
 
+### Avec Docker
+
+```bash
+$ git clone https://github.com/charlesen/kiss-ai.git
+$ cd kiss-ai
+$ docker compose up --build
+```
+
+L'application est ensuite disponible à l'adresse : http://localhost:8000
+
+### Sans Docker
+
 1. Cloner le dépôt :
 
 ```bash
