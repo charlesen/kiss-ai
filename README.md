@@ -80,9 +80,9 @@ Cette interface, générée automatiquement par FastAPI, vous permettra de teste
 
 ## Fonctionnalités clés (_en constante évolution_)
 
-- Synthèse vocale : Conversion de texte en parole de haute qualité, avec des options pour personnaliser la langue et la voix, en utilisant des bibliothèques comme pyttsx3 et gTTS.​
+- Synthèse vocale : conversion de texte en parole de haute qualité, avec des options pour personnaliser la langue et la voix, en utilisant des bibliothèques comme pyttsx3 et gTTS.​
 
-- Classification de texte : Catégorisation efficace de textes en différentes classes, facilitation de l'organisation et l'analyse de données textuelles.​
+- Classification de texte : catégorisation efficace de textes en différentes classes, facilitation de l'organisation et l'analyse de données textuelles.​
 
 - Génération de texte : création de contenu textuel basé sur des modèles pré-entraînés, permettant d'automatiser la rédaction et la génération de contenu.​
 
