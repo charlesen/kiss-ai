@@ -12,7 +12,7 @@ client = get_openai_client()
 class OpenAIResponse(BaseModel):
     content: str
 
-@router.get("/generate", response_model=OpenAIResponse, tags=["OpenAI"])
+@router.get("/generate", response_model=OpenAIResponse)
 async def generate_text(
     user_message: str = Query(..., description="Contenu du message pour le rôle user"),
     developer_message: Optional[str] = Query(
@@ -41,7 +41,7 @@ async def generate_text(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/summarize", tags=["OpenAI"])
+@router.get("/summarize")
 async def summarize_text(
     text: str = Query(..., description="Texte à résumer")
 ):

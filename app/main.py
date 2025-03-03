@@ -19,7 +19,7 @@ app = FastAPI(title="Kiss AI", debug=settings.debug)
 app.mount("/public", StaticFiles(directory="public"), name="public")
 
 # Endpoints de l'API publique
-app.include_router(openai_router, prefix="/api/openai", tags=["Generate"])
+app.include_router(openai_router, prefix="/api/openai", tags=["OpenAI"])
 app.include_router(media_router, prefix="/api/media", tags=["Media"])
 
 # Redirige la racine vers l'admin
