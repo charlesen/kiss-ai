@@ -1,7 +1,6 @@
 import uuid
 import os
 from typing import Optional
-import pyttsx3
 from gtts import gTTS
 
 from fastapi import APIRouter, HTTPException, Depends, Request
