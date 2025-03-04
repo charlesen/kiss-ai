@@ -8,7 +8,8 @@ def verify_master_key(x_master_key: str = Header(...)):
     à la clé d'authentification master définie dans les paramètres de l'application.
     Si la clé ne correspond pas ou n'est pas présente, 
     une erreur HTTP 401 est levée.
-    """    
+    """
+    print(x_master_key, settings.master_key)
     if x_master_key != settings.master_key:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

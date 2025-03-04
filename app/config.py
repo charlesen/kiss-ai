@@ -4,7 +4,7 @@ class Settings(BaseSettings):
     debug: bool = False
     openai_api_key: str
     openai_model: str
-    master_key: str  # Clé d'authentification master
+    master_key: str
 
     @property
     def database_url(self) -> str:
