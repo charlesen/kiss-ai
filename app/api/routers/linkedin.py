@@ -5,7 +5,7 @@ from app.dependencies import verify_master_key, get_openai_client
 from app.schemas.linkedin import LinkedInPostRequest, LinkedInPostResponse
 from app.models.linkedin_post import LinkedInPost
 from openai import AsyncOpenAI
-from typing import Dict
+from typing import Dict, List
 
 router = APIRouter(dependencies=[Depends(verify_master_key)])
 client: AsyncOpenAI = get_openai_client()
@@ -122,3 +122,8 @@ async def generate_linkedin_post(
     db.refresh(post)
 
     return LinkedInPostResponse(post=content)
+
+@router.get("/history", response_model=List[LinkedInPostResponse])
+def get_post_history(limit: int = 10, db: Session = Depends(get_db)):
+    posts = db.query(LinkedInPost).order_by(LinkedInPost.created_at.desc()).limit(limit).all()
+    return [{"post": post.content} for post in posts]
