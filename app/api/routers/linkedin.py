@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.dependencies import verify_master_key, get_openai_client, get_db
+from app.db import get_db
+from app.dependencies import verify_master_key, get_openai_client
 from app.schemas.linkedin import LinkedInPostRequest, LinkedInPostResponse
 from app.models.linkedin_post import LinkedInPost
 from openai import AsyncOpenAI
